@@ -49,13 +49,11 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.MyVi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailsActivity.class);
-                context.startActivity(intent);
                 intent.putExtra("image", character.getImage());
-                intent.putExtra("firstName", character.getName().split(" "));
-                intent.putExtra("lastName", character.getName().split(" "));
+                intent.putExtra("name", character.getName());
                 intent.putExtra("gender", character.getGender());
                 intent.putExtra("house", character.getHouse());
-
+                context.startActivity(intent);
 
             }
         });

@@ -17,7 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView gender;
     TextView house;
 
-    String ImageUrl, FirstName, LastName, Gender, House;
+    String ImageUrl, name, LastName, Gender, House;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class DetailsActivity extends AppCompatActivity {
         gender = findViewById(R.id.gender);
         house = findViewById(R.id.house);
 
-        getData();
         setData();
 
 
@@ -38,20 +37,17 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        if(getIntent().hasExtra("image") && getIntent().hasExtra("firstName") && getIntent().hasExtra("lastName") && getIntent().hasExtra("gender") && getIntent().hasExtra("house")){
-            ImageUrl = getIntent().getStringExtra("image");
-            FirstName = getIntent().getStringExtra("firsName");
-            LastName = getIntent().getStringExtra("lastName");
-            Gender = getIntent().getStringExtra("gender");
-            House = getIntent().getStringExtra("house");
-        }
-    }
 
-    private void getData() {
+        ImageUrl = getIntent().getStringExtra("image");
+        name = getIntent().getStringExtra("name");
+        Gender = getIntent().getStringExtra("gender");
+        House = getIntent().getStringExtra("house");
+
+        String fullName[] = name.split(" ");
 
         Glide.with(DetailsActivity.this).load(ImageUrl).into(detailsImage);
-        firstName.setText(FirstName);
-        lastName.setText(LastName);
+        firstName.setText(fullName[0]);
+        lastName.setText(fullName[1]);
         gender.setText(Gender);
         house.setText(House);
 
